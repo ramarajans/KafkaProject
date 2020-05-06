@@ -38,10 +38,18 @@ public class KafkaProducerClass {
 		KafkaProducerClass obj = new KafkaProducerClass();
 	}*/
 	
+	/*
+	 * Default Constructor
+	 * 
+	 */
 	public KafkaProducerClass() throws Exception{
 		sendMessage();
 	}
 
+	/*
+	 * This method is to initialize the properties
+	 * 
+	 */
 	public void intiSettings()throws Exception{
 
 		inputStream = new FileInputStream(System.getProperty("user.dir")+"\\config.properties");
@@ -57,6 +65,10 @@ public class KafkaProducerClass {
 		messageList = Arrays.asList(config.getProperty("messages").split("\\|"));
 	}
 	
+	/*
+	 * This method is to send message sent from producer
+	 * 
+	 */
 	public void sendMessage()throws Exception{
 
 		try{
@@ -86,6 +98,10 @@ public class KafkaProducerClass {
 		}
 	}
 	
+	/*
+	 * This method is to create kafka topic. It verifies if the topic is already created. Else creates a new topic with the given name
+	 * 
+	 */
 	public String createTopic(String topicName) throws Exception{
 
 		propTopic.put("bootstrap.servers", config.getProperty("bootstrap.servers"));
@@ -113,6 +129,10 @@ public class KafkaProducerClass {
 		return topicName;
 	}
 
+	/*
+	 * This method is to check if the topic is already created. 
+	 * 
+	 */
 	public boolean getTopic(String topic)throws Exception{
 
 		AdminClient adminClient = AdminClient.create(propTopic);

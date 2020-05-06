@@ -34,6 +34,7 @@ public class KafkaConsumerClass extends KafkaProducerClass{
 		KafkaConsumerClass obj = new KafkaConsumerClass();
 	}
 
+	//Default Constructor
 	public KafkaConsumerClass() throws Exception{
 		super();
 		topicName = super.topicName;
@@ -43,6 +44,10 @@ public class KafkaConsumerClass extends KafkaProducerClass{
 		validateMessage();
 	}
 
+	/*
+	 * This method is to compare the messages sent from Producer and received by Consumer
+	 * 
+	 */
 	public void validateMessage()throws Exception{
 		
 		//messagesReceived.add("test negative");
@@ -53,6 +58,11 @@ public class KafkaConsumerClass extends KafkaProducerClass{
 		else
 			System.out.println("Messages sent by Producer and received by Consumer are not matching!!!");
 	}
+	
+	/*
+	 * This method is to initialize the properties
+	 * 
+	 */
 	public void initSettings()throws Exception{
 		
 		prop.put("bootstrap.servers", config.getProperty("bootstrap.servers"));
@@ -61,6 +71,11 @@ public class KafkaConsumerClass extends KafkaProducerClass{
 		prop.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
 	}
+	
+	/*
+	 * This method is to consume the message sent by producer
+	 * 
+	 */
 	public void getMessage()throws Exception{
 
 		try{
